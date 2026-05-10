@@ -42,7 +42,7 @@ export function SiteHeader() {
 
         <nav
           aria-label="\u4e3b\u8981\u5c0e\u89bd"
-          className="mx-auto flex max-w-full items-center overflow-x-auto rounded-2xl bg-white/80 p-1 shadow-sm ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10"
+          className="mx-auto flex min-w-0 max-w-full items-center justify-start overflow-x-auto rounded-2xl bg-white/80 p-1 shadow-sm ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10"
         >
           {navItems.map((item) => {
             const Icon = item.icon ?? CalendarDays;

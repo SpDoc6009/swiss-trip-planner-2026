@@ -37,8 +37,8 @@ export function ItineraryExplorer({ initialDayId = 2 }: { initialDayId?: number 
   }
 
   return (
-    <div className="grid gap-5 lg:grid-cols-[12rem_minmax(0,1fr)_25rem] xl:grid-cols-[13rem_minmax(0,1fr)_28rem]">
-      <aside className="lg:sticky lg:top-24 lg:self-start">
+    <div className="grid min-w-0 gap-5 lg:grid-cols-[12rem_minmax(0,1fr)_25rem] xl:grid-cols-[13rem_minmax(0,1fr)_28rem]">
+      <aside className="min-w-0 lg:sticky lg:top-24 lg:self-start">
         <DayTabs days={itineraryDays} selectedDayId={selectedDay.id} onSelect={selectDay} />
       </aside>
 
@@ -63,8 +63,8 @@ export function ItineraryExplorer({ initialDayId = 2 }: { initialDayId?: number 
         </AnimatePresence>
       </section>
 
-      <aside className="space-y-5 lg:sticky lg:top-24 lg:self-start">
-        <div className="rounded-2xl bg-white p-3 shadow-soft ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10">
+      <aside className="min-w-0 space-y-5 lg:sticky lg:top-24 lg:self-start">
+        <div className="min-w-0 rounded-2xl bg-white p-3 shadow-soft ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10">
           <div className="mb-3 grid grid-cols-2 gap-2">
             <button
               type="button"

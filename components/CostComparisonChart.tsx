@@ -20,8 +20,8 @@ export function CostComparisonChart() {
   }));
 
   return (
-    <div className="grid gap-4 lg:grid-cols-2">
-      <div className="h-80 rounded-2xl border border-slate-200 bg-white p-4 dark:border-white/10 dark:bg-white/8">
+    <div className="grid min-w-0 gap-4 lg:grid-cols-2">
+      <div className="h-80 min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 dark:border-white/10 dark:bg-white/8">
         <h3 className="mb-4 font-black text-lake-900 dark:text-white">總交通成本比較</h3>
         <ResponsiveContainer width="100%" height="85%">
           <BarChart data={totals}>
@@ -38,7 +38,7 @@ export function CostComparisonChart() {
         </ResponsiveContainer>
       </div>
 
-      <div className="h-80 rounded-2xl border border-slate-200 bg-white p-4 dark:border-white/10 dark:bg-white/8">
+      <div className="h-80 min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 dark:border-white/10 dark:bg-white/8">
         <h3 className="mb-4 font-black text-lake-900 dark:text-white">推薦方案成本組成</h3>
         <ResponsiveContainer width="100%" height="85%">
           <PieChart>

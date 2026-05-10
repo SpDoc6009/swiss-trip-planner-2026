@@ -13,14 +13,13 @@
 html {
   scroll-behavior: smooth;
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 body {
   background: #f8fafc;
   color: #0f172a;
+  margin: 0;
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 * {
@@ -34,16 +33,31 @@ video {
   max-width: 100%;
 }
 
+:where(main, section, article, aside, header, footer, nav, div) {
+  min-width: 0;
+}
+
+.recharts-wrapper,
+.recharts-surface {
+  max-width: 100%;
+}
+
 .dark body {
   background: #071923;
   color: #f8fafc;
 }
 
 .leaflet-container {
-  min-height: 420px;
+  min-height: 320px;
   width: 100%;
   border-radius: 1rem;
   z-index: 0;
+}
+
+@media (min-width: 1024px) {
+  .leaflet-container {
+    min-height: 420px;
+  }
 }
 
 .trip-marker {

@@ -334,7 +334,7 @@ export function ExpenseTracker() {
 
         {totals.grandTotal > 0 ? (
           <div className="mt-6 grid gap-5 xl:grid-cols-2">
-            <article className="rounded-2xl border border-slate-200 bg-swiss-snow p-4 dark:border-white/10 dark:bg-lake-900/50">
+            <article className="min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-swiss-snow p-4 dark:border-white/10 dark:bg-lake-900/50">
               <h2 className="text-lg font-black text-lake-900 dark:text-white">{labels.categoryShare}</h2>
               <div className="mt-4 h-72 min-w-0">
                 <ResponsiveContainer width="100%" height="100%">
@@ -362,7 +362,7 @@ export function ExpenseTracker() {
               </div>
             </article>
 
-            <article className="rounded-2xl border border-slate-200 bg-swiss-snow p-4 dark:border-white/10 dark:bg-lake-900/50">
+            <article className="min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-swiss-snow p-4 dark:border-white/10 dark:bg-lake-900/50">
               <h2 className="text-lg font-black text-lake-900 dark:text-white">{labels.categoryTotal}</h2>
               <div className="mt-4 h-72 min-w-0">
                 <ResponsiveContainer width="100%" height="100%">

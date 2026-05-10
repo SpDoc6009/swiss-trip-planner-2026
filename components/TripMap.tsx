@@ -32,8 +32,8 @@ export function TripMap({ selectedDay, routeMode, focusPlaceId }: TripMapProps) 
   const focusPlace = focusPlaceId ? placeById.get(focusPlaceId) : undefined;
 
   return (
-    <div className="overflow-hidden rounded-2xl bg-white p-2 shadow-soft ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10">
-      <MapContainer center={[46.8182, 8.2275]} zoom={7} scrollWheelZoom className="h-[430px] lg:h-[560px]">
+    <div className="min-w-0 overflow-hidden rounded-2xl bg-white p-2 shadow-soft ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10">
+      <MapContainer center={[46.8182, 8.2275]} zoom={7} scrollWheelZoom className="h-[340px] w-full sm:h-[430px] lg:h-[560px]">
         <TileLayer attribution={tileProvider.attribution} url={tileProvider.url} tileSize={tileProvider.tileSize} zoomOffset={tileProvider.zoomOffset} />
         <MapFocus places={focusPlace ? [focusPlace] : routePlaces} focusPlace={focusPlace} />
         <Polyline positions={routePlaces.map((place) => [place.lat, place.lng])} pathOptions={{ color: routeMode === "all" ? "#d52b1e" : "#16566d", weight: 4, opacity: 0.75 }} />
