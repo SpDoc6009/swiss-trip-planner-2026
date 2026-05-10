@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200" role="img" aria-label="Swiss mountain lake placeholder">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#9fd3e6"/>
+      <stop offset="45%" stop-color="#eef8fb"/>
+      <stop offset="100%" stop-color="#d6eef5"/>
+    </linearGradient>
+    <linearGradient id="lake" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#16566d"/>
+      <stop offset="52%" stop-color="#2b8da8"/>
+      <stop offset="100%" stop-color="#082f3d"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="1800" height="1200" fill="url(#sky)"/>
+  <circle cx="1390" cy="190" r="95" fill="#fff7d6" opacity="0.9"/>
+  <path d="M0 620L250 340L420 520L610 250L840 565L1045 300L1300 610L1500 390L1800 650V1200H0Z" fill="#334155"/>
+  <path d="M250 340L360 456L310 438L250 520L188 410Z" fill="#f8fafc"/>
+  <path d="M610 250L725 408L650 386L600 455L528 358Z" fill="#f8fafc"/>
+  <path d="M1045 300L1150 430L1080 408L1030 475L965 382Z" fill="#f8fafc"/>
+  <path d="M1500 390L1588 500L1525 486L1480 548L1422 460Z" fill="#f8fafc"/>
+  <path d="M0 710C220 650 370 690 540 650C760 596 925 665 1100 625C1320 575 1510 630 1800 590V1200H0Z" fill="url(#lake)"/>
+  <path d="M80 790C320 740 510 765 720 735C930 705 1170 765 1440 700" stroke="#f8fafc" stroke-width="8" opacity="0.28" fill="none"/>
+  <path d="M280 890C520 840 720 870 920 835C1110 802 1320 850 1580 795" stroke="#f8fafc" stroke-width="7" opacity="0.18" fill="none"/>
+  <ellipse cx="490" cy="735" rx="210" ry="28" fill="#ffffff" opacity="0.1" filter="url(#soft)"/>
+  <ellipse cx="1260" cy="690" rx="250" ry="32" fill="#ffffff" opacity="0.12" filter="url(#soft)"/>
+</svg>

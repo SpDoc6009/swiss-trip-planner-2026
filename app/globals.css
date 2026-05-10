@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: #f8fafc;
+  color: #0f172a;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img,
+svg,
+canvas,
+video {
+  max-width: 100%;
+}
+
+.dark body {
+  background: #071923;
+  color: #f8fafc;
+}
+
+.leaflet-container {
+  min-height: 420px;
+  width: 100%;
+  border-radius: 1rem;
+  z-index: 0;
+}
+
+.trip-marker {
+  align-items: center;
+  background: #f8fafc;
+  border: 2px solid #16566d;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(8, 47, 61, 0.22);
+  color: #082f3d;
+  display: flex;
+  font-size: 14px;
+  font-weight: 800;
+  height: 34px;
+  justify-content: center;
+  transition: transform 160ms ease, border-color 160ms ease;
+  width: 34px;
+}
+
+.trip-marker:hover {
+  border-color: #d52b1e;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 14px;
+}
+
+.focus-ring {
+  @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lake-700 dark:focus-visible:outline-lake-100;
+}
