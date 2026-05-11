@@ -9,7 +9,7 @@ export default function ItineraryPage() {
           <p className="text-sm font-black text-swiss-red">互動行程</p>
           <h1 className="mt-2 text-3xl font-black text-lake-900 dark:text-white">{trip.title}</h1>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
-            切換 Day、查看時間軸、定位地點、比較今日路線與全行程路線；天氣卡會在接近出發日自動讀取 Open-Meteo 預報。
+            依 Day 切換時間軸、地圖、天氣與雙日圖文行程。手機版可直向閱讀，旅途中快速查看也不會被資訊塞滿。
           </p>
         </div>
         <ItineraryExplorer initialDayId={2} />

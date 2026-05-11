@@ -6,6 +6,7 @@ import { MapPinned, Route } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import { DayTabs } from "@/components/DayTabs";
+import { DualDayItineraryCard } from "@/components/DualDayItineraryCard";
 import { ItineraryTimeline } from "@/components/ItineraryTimeline";
 import { SearchPlaces } from "@/components/SearchPlaces";
 import { WeatherCard } from "@/components/WeatherCard";
@@ -61,6 +62,7 @@ export function ItineraryExplorer({ initialDayId = 2 }: { initialDayId?: number 
             <ItineraryTimeline day={selectedDay} />
           </motion.div>
         </AnimatePresence>
+        <DualDayItineraryCard dayId={selectedDay.id} />
       </section>
 
       <aside className="min-w-0 space-y-5 lg:sticky lg:top-24 lg:self-start">

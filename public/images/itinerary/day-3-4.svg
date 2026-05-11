@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="Day 3-4 itinerary image placeholder">
+  <rect width="1200" height="1500" fill="#082f3d"/>
+  <rect x="80" y="80" width="1040" height="1340" rx="48" fill="#f8fafc"/>
+  <text x="140" y="210" fill="#d52b1e" font-family="Arial" font-size="42" font-weight="700">Itinerary Artwork</text>
+  <text x="140" y="310" fill="#082f3d" font-family="Arial" font-size="88" font-weight="800">Day 3-4</text>
+  <text x="140" y="405" fill="#334155" font-family="Arial" font-size="42">Replace with your travel image</text>
+  <circle cx="940" cy="1150" r="150" fill="#2b8da8" opacity="0.24"/>
+  <path d="M140 1080 360 840 520 980 700 720 1060 1080Z" fill="#16566d"/>
+</svg>

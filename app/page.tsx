@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CalendarCheck, CircleAlert, MapPinned, ReceiptText, TicketCheck, WalletCards } from "lucide-react";
+import { BookOpen, CalendarCheck, CircleAlert, MapPinned, ReceiptText, TicketCheck, WalletCards } from "lucide-react";
 
 import { Hero } from "@/components/Hero";
 import { ItineraryExplorer } from "@/components/ItineraryExplorer";
@@ -35,6 +35,12 @@ const featureCards = [
     title: "\u745e\u58eb\u65c5\u904a\u6ce8\u610f\u4e8b\u9805",
     description: "\u6574\u7406\u5929\u6c23\u3001\u7c3d\u8b49\u3001\u96fb\u58d3\u3001\u8ca8\u5e63\u30016 \u6708\u7a7f\u642d\u8207\u884c\u674e\u6e05\u55ae\uff0c\u51fa\u767c\u524d\u5feb\u901f\u6aa2\u67e5\u3002",
     icon: CircleAlert
+  },
+  {
+    href: "/magazine",
+    title: "\u65c5\u904a\u653b\u7565",
+    description: "\u6536\u7d0d\u4f60\u7684\u96dc\u8a8c\u98a8\u683c\u653b\u7565\u5716\u6587\uff0c\u4ee5\u5927\u5716\u5361\u7247\u65b9\u5f0f\u9069\u5408\u624b\u6a5f\u6162\u6162\u95b1\u8b80\u3002",
+    icon: BookOpen
   }
 ];
 
@@ -44,7 +50,7 @@ export default function HomePage() {
       <Hero />
       <section className="bg-swiss-snow py-12 dark:bg-lake-900">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
             {featureCards.map((card) => {
               const Icon = card.icon;
               return (

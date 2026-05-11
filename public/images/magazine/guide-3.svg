@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="Magazine guide image placeholder 3">
+  <rect width="1200" height="1500" fill="#f8fafc"/>
+  <rect x="0" y="0" width="1200" height="620" fill="#16566d"/>
+  <text x="90" y="760" fill="#d52b1e" font-family="Arial" font-size="42" font-weight="700">Swiss Magazine</text>
+  <text x="90" y="875" fill="#082f3d" font-family="Arial" font-size="92" font-weight="800">Guide 3</text>
+  <text x="90" y="970" fill="#334155" font-family="Arial" font-size="42">Replace with your article image</text>
+</svg>
