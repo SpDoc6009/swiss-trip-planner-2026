@@ -5,8 +5,8 @@ import { CalendarDays, Car, MapPinned, Ticket, Users } from "lucide-react";
 import { trip } from "@/data/itinerary";
 
 const heroText = {
-  title: "2026 \u745e\u58eb\u6e56\u5149\u5c71\u8272\u81ea\u99d5\u65c5\u884c",
-  subtitle: "Luzern\u30fbPilatus\u30fbZermatt\u30fbMatterhorn\u30fbGrindelwald\u30fbInterlaken\u30fbLauterbrunnen\u30fbZ\u00fcrich",
+  title: "夏季的瑞士阿爾卑斯自駕遊",
+  subtitle: "2026年6月. 宏恩旅行社出品",
   date: "2026/06/18\u20132026/06/28",
   imageAlt: "\u745e\u58eb\u5c71\u6e56\u98a8\u666f\u4f54\u4f4d\u5716\uff0c\u53ef\u5728 public/images/placeholder \u66ff\u63db\u70ba\u81ea\u5df1\u7684\u65c5\u884c\u7167\u7247",
   itinerary: "\u958b\u59cb\u67e5\u770b\u884c\u7a0b",
