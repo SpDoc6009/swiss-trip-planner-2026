@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, CalendarCheck, CircleAlert, MapPinned, ReceiptText, TicketCheck, WalletCards } from "lucide-react";
+import { BookOpen, CalendarCheck, CalendarClock, CircleAlert, MapPinned, ReceiptText, TicketCheck, WalletCards } from "lucide-react";
 
 import { Hero } from "@/components/Hero";
 import { ItineraryExplorer } from "@/components/ItineraryExplorer";
@@ -11,6 +11,12 @@ const featureCards = [
     title: "\u6bcf\u65e5\u4e92\u52d5\u884c\u7a0b",
     description: "Day selector\u3001\u6642\u9593\u8ef8\u3001\u5730\u9ede\u641c\u5c0b\u3001\u5730\u5716\u5b9a\u4f4d\u8207\u5929\u6c23\u5361\u6574\u5408\u5728\u540c\u4e00\u500b\u5de5\u4f5c\u5340\u3002",
     icon: MapPinned
+  },
+  {
+    href: "/today",
+    title: "\u4eca\u65e5\u6a21\u5f0f",
+    description: "\u65c5\u884c\u7576\u4e0b\u5feb\u901f\u67e5\u770b\u4eca\u5929 Day \u5e7e\u3001\u4e0b\u4e00\u500b\u884c\u7a0b\u3001\u4f4f\u5bbf\u3001\u5c0e\u822a\u8207\u51fa\u9580\u6aa2\u67e5\u6e05\u55ae\u3002",
+    icon: CalendarClock
   },
   {
     href: "/bookings",
@@ -50,7 +56,7 @@ export default function HomePage() {
       <Hero />
       <section className="bg-swiss-snow py-12 dark:bg-lake-900">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7">
             {featureCards.map((card) => {
               const Icon = card.icon;
               return (
@@ -90,3 +96,4 @@ export default function HomePage() {
     </>
   );
 }
+

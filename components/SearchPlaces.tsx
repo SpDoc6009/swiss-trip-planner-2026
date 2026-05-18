@@ -3,6 +3,7 @@
 import { Search, Target } from "lucide-react";
 import { useMemo, useState } from "react";
 
+import { MapActionButtons } from "@/components/MapActionButtons";
 import { itineraryDays } from "@/data/itinerary";
 import { places } from "@/data/places";
 import { placeTypeLabels } from "@/lib/map";
@@ -10,6 +11,13 @@ import { placeTypeLabels } from "@/lib/map";
 interface SearchPlacesProps {
   onLocate: (dayId: number, placeId: string) => void;
 }
+
+const labels = {
+  search: "\u5730\u9ede\u641c\u5c0b",
+  placeholder: "\u641c\u5c0b Luzern\u3001Pilatus\u3001Z\u00fcrich...",
+  empty: "\u627e\u4e0d\u5230\u7b26\u5408\u7684\u5730\u9ede\u3002",
+  locate: "\u5b9a\u4f4d"
+};
 
 export function SearchPlaces({ onLocate }: SearchPlacesProps) {
   const [query, setQuery] = useState("");
@@ -36,7 +44,7 @@ export function SearchPlaces({ onLocate }: SearchPlacesProps) {
   return (
     <section className="rounded-2xl bg-white p-5 shadow-soft ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10">
       <label htmlFor="place-search" className="text-sm font-black text-lake-900 dark:text-white">
-        地點查詢
+        {labels.search}
       </label>
       <div className="mt-3 flex items-center gap-2 rounded-2xl border border-slate-200 bg-swiss-snow px-3 py-2 dark:border-white/10 dark:bg-lake-900/50">
         <Search className="h-4 w-4 text-slate-400" aria-hidden="true" />
@@ -44,33 +52,39 @@ export function SearchPlaces({ onLocate }: SearchPlacesProps) {
           id="place-search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="搜尋 Luzern、Pilatus、Zürich..."
+          placeholder={labels.placeholder}
           className="w-full bg-transparent text-sm font-medium outline-none placeholder:text-slate-400"
         />
       </div>
 
       <div className="mt-4 space-y-2">
         {query && results.length === 0 ? (
-          <p className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-500 dark:bg-lake-900/50 dark:text-slate-300">找不到符合的地點。</p>
+          <p className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-500 dark:bg-lake-900/50 dark:text-slate-300">{labels.empty}</p>
         ) : null}
         {results.map(({ place, days }) => (
           <article key={place.id} className="rounded-2xl border border-slate-200 p-3 dark:border-white/10">
-            <div className="flex items-start justify-between gap-3">
-              <div>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div className="min-w-0">
                 <h3 className="font-black text-lake-900 dark:text-white">{place.name}</h3>
-                <p className="mt-1 text-xs font-bold text-slate-500 dark:text-slate-300">{placeTypeLabels[place.type]} · {days.map((day) => `Day ${day.id}`).join("、")}</p>
+                <p className="mt-1 text-xs font-bold text-slate-500 dark:text-slate-300">
+                  {placeTypeLabels[place.type]} · {days.map((day) => `Day ${day.id}`).join("、")}
+                </p>
               </div>
-              <button
-                type="button"
-                className="focus-ring flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-lake-900 text-white transition hover:-translate-y-0.5 dark:bg-white dark:text-lake-900"
-                aria-label={`定位 ${place.name}`}
-                onClick={() => {
-                  const firstDay = days[0];
-                  if (firstDay) onLocate(firstDay.id, place.id);
-                }}
-              >
-                <Target className="h-4 w-4" />
-              </button>
+              <div className="flex shrink-0 flex-wrap gap-2">
+                <button
+                  type="button"
+                  className="focus-ring flex h-9 items-center gap-1.5 rounded-2xl bg-lake-900 px-3 text-xs font-black text-white transition hover:-translate-y-0.5 dark:bg-white dark:text-lake-900"
+                  aria-label={`${labels.locate} ${place.name}`}
+                  onClick={() => {
+                    const firstDay = days[0];
+                    if (firstDay) onLocate(firstDay.id, place.id);
+                  }}
+                >
+                  <Target className="h-3.5 w-3.5" />
+                  {labels.locate}
+                </button>
+                <MapActionButtons place={place} compact />
+              </div>
             </div>
           </article>
         ))}
@@ -78,3 +92,4 @@ export function SearchPlaces({ onLocate }: SearchPlacesProps) {
     </section>
   );
 }
+

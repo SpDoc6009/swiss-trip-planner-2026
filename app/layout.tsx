@@ -41,7 +41,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={notoSansTc.className}>
         <ThemeProvider>
           <SiteHeader />
-          <main>{children}</main>
+          <main className="pb-24 md:pb-0">{children}</main>
           <SiteFooter />
         </ThemeProvider>
       </body>
