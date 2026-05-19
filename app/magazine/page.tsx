@@ -3,6 +3,12 @@ import { BookOpen, ExternalLink } from "lucide-react";
 
 import { magazineGuides } from "@/data/media";
 
+const labels = {
+  title: "\u745e\u58eb\u65c5\u884c\u96dc\u8a8c\u653b\u7565",
+  intro:
+    "\u628a\u884c\u524d\u91cd\u9ede\u3001\u6bcf\u6bb5\u65c5\u7a0b\u6c1b\u570d\u8207\u62cd\u7167\u63d0\u9192\u6536\u5728\u4e00\u8d77\uff0c\u9069\u5408\u51fa\u767c\u524d\u9810\u7fd2\uff0c\u4e5f\u9069\u5408\u65c5\u884c\u4e2d\u7576\u4f5c\u5716\u6587\u7248\u653b\u7565\u67e5\u770b\u3002"
+};
+
 export default function MagazinePage() {
   return (
     <main className="min-h-screen bg-slate-100 dark:bg-[#071923]">
@@ -12,10 +18,8 @@ export default function MagazinePage() {
             <BookOpen className="h-4 w-4" />
             Swiss Magazine
           </p>
-          <h1 className="mt-3 max-w-4xl text-4xl font-black leading-tight sm:text-5xl">瑞士旅行靈感誌</h1>
-          <p className="mt-5 max-w-3xl text-base leading-8 text-white/80">
-            這裡放旅遊雜誌風格的攻略文章圖卡。手機版會一張一張直向閱讀，桌機版則以大圖卡呈現，之後可直接替換為你的五張攻略圖片。
-          </p>
+          <h1 className="mt-3 max-w-4xl text-4xl font-black leading-tight sm:text-5xl">{labels.title}</h1>
+          <p className="mt-5 max-w-3xl text-base leading-8 text-white/80">{labels.intro}</p>
         </div>
       </section>
 
@@ -23,7 +27,11 @@ export default function MagazinePage() {
         {magazineGuides.map((guide, index) => (
           <article
             key={guide.id}
-            className={index === 0 ? "overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10 lg:col-span-2" : "overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10"}
+            className={
+              index === 0
+                ? "overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10 lg:col-span-2"
+                : "overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10"
+            }
           >
             <a href={guide.src} target="_blank" rel="noreferrer" className="focus-ring group block bg-slate-100 dark:bg-lake-900/50">
               <Image
@@ -32,6 +40,8 @@ export default function MagazinePage() {
                 width={1024}
                 height={1448}
                 sizes={index === 0 ? "100vw" : "(min-width: 1024px) 50vw, 100vw"}
+                priority={index === 0}
+                quality={82}
                 className="h-auto w-full transition duration-300 group-hover:scale-[1.01]"
               />
             </a>

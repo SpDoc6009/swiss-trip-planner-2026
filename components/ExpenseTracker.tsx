@@ -5,6 +5,7 @@ import { Car, Hotel, Plus, ReceiptText, Trash2, Utensils, WalletCards } from "lu
 import { useEffect, useMemo, useState } from "react";
 import { Bar, BarChart, CartesianGrid, Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
+import { CurrencyConverter } from "@/components/CurrencyConverter";
 import { cn, formatNtd } from "@/lib/format";
 
 type ExpenseCategoryId = "transport" | "food" | "lodging" | "misc";
@@ -232,6 +233,8 @@ export function ExpenseTracker() {
           })}
         </div>
       </section>
+
+      <CurrencyConverter />
 
       <div className="grid gap-5 xl:grid-cols-2">
         {categories.map((category) => {

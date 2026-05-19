@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MapPinned, Route } from "lucide-react";
 import { useMemo, useState } from "react";
 
+import { DailyNotes } from "@/components/DailyNotes";
 import { DayTabs } from "@/components/DayTabs";
 import { DualDayItineraryCard } from "@/components/DualDayItineraryCard";
 import { ItineraryTimeline } from "@/components/ItineraryTimeline";
@@ -18,7 +19,7 @@ const TripMap = dynamic(() => import("@/components/TripMap").then((mod) => mod.T
   ssr: false,
   loading: () => (
     <div className="flex h-[430px] items-center justify-center rounded-2xl bg-white text-sm font-bold text-slate-500 shadow-soft ring-1 ring-slate-200 dark:bg-white/8 dark:text-slate-300 dark:ring-white/10">
-      載入互動地圖中
+      {"\u5730\u5716\u8f09\u5165\u4e2d..."}
     </div>
   )
 });
@@ -63,6 +64,7 @@ export function ItineraryExplorer({ initialDayId = 2 }: { initialDayId?: number 
           </motion.div>
         </AnimatePresence>
         <DualDayItineraryCard dayId={selectedDay.id} />
+        <DailyNotes day={selectedDay} />
       </section>
 
       <aside className="min-w-0 space-y-5 lg:sticky lg:top-24 lg:self-start">
@@ -80,7 +82,7 @@ export function ItineraryExplorer({ initialDayId = 2 }: { initialDayId?: number 
               )}
             >
               <MapPinned className="h-4 w-4" />
-              今日路線
+              {"\u4eca\u65e5\u8def\u7dda"}
             </button>
             <button
               type="button"
@@ -94,7 +96,7 @@ export function ItineraryExplorer({ initialDayId = 2 }: { initialDayId?: number 
               )}
             >
               <Route className="h-4 w-4" />
-              全行程
+              {"\u5168\u884c\u7a0b"}
             </button>
           </div>
           <TripMap selectedDay={selectedDay} routeMode={routeMode} focusPlaceId={focusPlaceId} />

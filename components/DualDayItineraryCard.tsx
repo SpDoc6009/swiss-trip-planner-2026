@@ -27,6 +27,7 @@ export function DualDayItineraryCard({ dayId }: { dayId: number }) {
           width={1024}
           height={1448}
           sizes="(min-width: 1024px) 48rem, 100vw"
+          quality={82}
           className="h-auto w-full transition duration-300 group-hover:scale-[1.01]"
         />
       </a>
