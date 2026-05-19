@@ -6,6 +6,8 @@ import { Noto_Sans_TC } from "next/font/google";
 
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { OfflineNotice } from "@/components/OfflineNotice";
+import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 const notoSansTc = Noto_Sans_TC({
@@ -40,6 +42,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="zh-Hant" suppressHydrationWarning>
       <body className={notoSansTc.className}>
         <ThemeProvider>
+          <ServiceWorkerRegister />
+          <OfflineNotice />
           <SiteHeader />
           <main className="pb-24 md:pb-0">{children}</main>
           <SiteFooter />
