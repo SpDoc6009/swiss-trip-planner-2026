@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, CalendarClock, CalendarDays, CircleAlert, Home, ListChecks, MapPinned, Moon, Plane, ReceiptText, SunMedium, WalletCards } from "lucide-react";
+import { BookOpen, CalendarClock, CalendarDays, CarFront, CircleAlert, FileText, Home, ListChecks, MapPinned, Moon, Plane, ReceiptText, ShieldAlert, SunMedium, WalletCards } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
@@ -14,6 +14,9 @@ const navItems: NavItem[] = [
   { href: "/today", label: "\u4eca\u65e5", icon: CalendarClock },
   { href: "/itinerary", label: "\u884c\u7a0b", icon: MapPinned },
   { href: "/bookings", label: "\u9810\u8a02", icon: ListChecks },
+  { href: "/documents", label: "\u6587\u4ef6", icon: FileText },
+  { href: "/emergency", label: "\u7dca\u6025", icon: ShieldAlert },
+  { href: "/parking", label: "\u505c\u8eca", icon: CarFront },
   { href: "/costs", label: "\u7968\u5238\u8a66\u7b97", icon: WalletCards },
   { href: "/expenses", label: "\u65c5\u8cbb\u8a18\u5e33", icon: ReceiptText },
   { href: "/travel-notes", label: "\u6ce8\u610f\u4e8b\u9805", icon: CircleAlert },

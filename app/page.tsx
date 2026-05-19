@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, CalendarCheck, CalendarClock, CircleAlert, MapPinned, ReceiptText, TicketCheck, WalletCards } from "lucide-react";
+import { BookOpen, CalendarCheck, CalendarClock, CarFront, CircleAlert, FileText, MapPinned, ReceiptText, ShieldAlert, TicketCheck, WalletCards } from "lucide-react";
 
 import { Hero } from "@/components/Hero";
 import { ItineraryExplorer } from "@/components/ItineraryExplorer";
@@ -23,6 +23,24 @@ const featureCards = [
     title: "\u9810\u8a02\u63d0\u9192",
     description: "\u628a\u5fc5\u9808\u5148\u8a02\u3001\u5f37\u70c8\u5efa\u8b70\u5148\u8a02\u3001\u53ef\u73fe\u5834\u8cb7\u5206\u958b\u7ba1\u7406\uff0c\u65c5\u884c\u524d\u9010\u9805\u52fe\u9078\u3002",
     icon: TicketCheck
+  },
+  {
+    href: "/documents",
+    title: "\u6587\u4ef6\u7968\u5238",
+    description: "\u6536\u7d0d\u6a5f\u7968\u3001\u98ef\u5e97\u3001\u79df\u8eca voucher \u8207\u5c71\u5340\u7968\u5238\u7684\u9023\u7d50\u8207\u6e96\u5099\u72c0\u614b\u3002",
+    icon: FileText
+  },
+  {
+    href: "/emergency",
+    title: "\u7dca\u6025\u8cc7\u8a0a",
+    description: "\u5feb\u901f\u627e\u5230\u745e\u58eb\u7dca\u6025\u96fb\u8a71\u3001\u6025\u96e3\u6551\u52a9\u3001\u4fdd\u96aa\u8207\u639b\u5931\u63d0\u9192\u3002",
+    icon: ShieldAlert
+  },
+  {
+    href: "/parking",
+    title: "\u505c\u8eca\u8207\u53d6\u9084\u8eca",
+    description: "\u8a18\u9304\u505c\u8eca\u4f4d\u7f6e\u3001\u53d6\u8eca\u9084\u8eca\u6aa2\u67e5\u3001\u505c\u8eca\u5834\u5c0e\u822a\u8207\u81ea\u99d5\u5099\u8a3b\u3002",
+    icon: CarFront
   },
   {
     href: "/costs",
@@ -56,7 +74,7 @@ export default function HomePage() {
       <Hero />
       <section className="bg-swiss-snow py-12 dark:bg-lake-900">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {featureCards.map((card) => {
               const Icon = card.icon;
               return (
@@ -96,4 +114,3 @@ export default function HomePage() {
     </>
   );
 }
-

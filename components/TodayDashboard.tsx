@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { CalendarClock, ChevronRight, Hotel, Navigation, Ticket } from "lucide-react";
+import type { ComponentType } from "react";
+import { CalendarClock, CarFront, ChevronRight, FileText, Hotel, Navigation, ShieldAlert, Ticket } from "lucide-react";
 import { useMemo } from "react";
 
 import { DailyChecklist } from "@/components/DailyChecklist";
@@ -16,6 +17,10 @@ const labels = {
   nextFocus: "\u4e0b\u4e00\u500b\u91cd\u9ede",
   hotelTonight: "\u4eca\u665a\u4f4f\u5bbf",
   quickNav: "\u4eca\u65e5\u5730\u9ede\u5feb\u901f\u5c0e\u822a",
+  tools: "\u65c5\u884c\u5de5\u5177",
+  documents: "\u6587\u4ef6\u7968\u5238",
+  emergency: "\u7dca\u6025\u8cc7\u8a0a",
+  parking: "\u505c\u8eca\u52a9\u624b",
   tickets: "\u4eca\u65e5\u7968\u5238 / \u9810\u8a02",
   exact: "\u4eca\u5929\u5c31\u662f\u9019\u4e00\u5929",
   before: "\u8ddd\u96e2\u51fa\u767c\u9084\u6709",
@@ -41,8 +46,8 @@ export function TodayDashboard() {
         <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="text-sm font-bold text-white/70">{todayState.label}</p>
-            <h1 className="mt-2 text-4xl font-black leading-tight">Day {day.id} · {day.theme}</h1>
-            <p className="mt-3 text-sm leading-6 text-white/75">{formatFullDate(day.date)} · {day.weekday} · {day.region}</p>
+            <h1 className="mt-2 text-4xl font-black leading-tight">Day {day.id} {"·"} {day.theme}</h1>
+            <p className="mt-3 text-sm leading-6 text-white/75">{formatFullDate(day.date)} {"·"} {day.weekday} {"·"} {day.region}</p>
           </div>
           <Link href="/itinerary" className="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm font-black text-lake-900 transition hover:-translate-y-0.5">
             {labels.openItinerary}
@@ -100,6 +105,14 @@ export function TodayDashboard() {
         </div>
 
         <aside className="space-y-5">
+          <section className="rounded-2xl bg-white p-5 shadow-soft ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10">
+            <p className="text-sm font-black text-swiss-red">{labels.tools}</p>
+            <div className="mt-4 grid gap-2">
+              <ToolLink href="/documents" icon={FileText} label={labels.documents} />
+              <ToolLink href="/emergency" icon={ShieldAlert} label={labels.emergency} />
+              <ToolLink href="/parking" icon={CarFront} label={labels.parking} />
+            </div>
+          </section>
           <DailyChecklist day={day} />
           <section className="rounded-2xl bg-white p-5 shadow-soft ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10">
             <p className="inline-flex items-center gap-2 text-sm font-black text-swiss-red">
@@ -117,6 +130,18 @@ export function TodayDashboard() {
         </aside>
       </div>
     </div>
+  );
+}
+
+function ToolLink({ href, icon: Icon, label }: { href: string; icon: ComponentType<{ className?: string }>; label: string }) {
+  return (
+    <Link href={href} className="focus-ring flex items-center justify-between rounded-2xl bg-swiss-snow p-3 text-sm font-black text-lake-900 transition hover:-translate-y-0.5 dark:bg-lake-900/50 dark:text-white">
+      <span className="inline-flex items-center gap-2">
+        <Icon className="h-4 w-4" />
+        {label}
+      </span>
+      <ChevronRight className="h-4 w-4 text-slate-400" />
+    </Link>
   );
 }
 
@@ -154,4 +179,3 @@ function differenceInDays(target: string, from: string) {
   const fromTime = new Date(`${from}T00:00:00`).getTime();
   return Math.ceil((targetTime - fromTime) / 86_400_000);
 }
-
