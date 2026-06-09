@@ -8,6 +8,7 @@ import { useMemo, useState } from "react";
 import { DailyNotes } from "@/components/DailyNotes";
 import { DayTabs } from "@/components/DayTabs";
 import { DualDayItineraryCard } from "@/components/DualDayItineraryCard";
+import { FlightTransferSummary } from "@/components/FlightTransferSummary";
 import { ItineraryTimeline } from "@/components/ItineraryTimeline";
 import { SearchPlaces } from "@/components/SearchPlaces";
 import { WeatherCard } from "@/components/WeatherCard";
@@ -63,6 +64,7 @@ export function ItineraryExplorer({ initialDayId = 2 }: { initialDayId?: number 
             <ItineraryTimeline day={selectedDay} />
           </motion.div>
         </AnimatePresence>
+        <FlightTransferSummary dayId={selectedDay.id} compact />
         <DualDayItineraryCard dayId={selectedDay.id} />
         <DailyNotes day={selectedDay} />
       </section>

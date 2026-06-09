@@ -22,7 +22,12 @@ export const itineraryDays: ItineraryDay[] = [
     weatherPlaceId: "tpe",
     routePlaceIds: ["tpe", "sin", "zurich-airport"],
     placeIds: ["tpe", "sin"],
-    flights: ["SQ879 17:45 TPE → 22:15 SIN", "LX177 23:25 SIN → 2026/06/19 06:15 ZRH"],
+    flights: [
+      "全鋒接送 D3803617：2026/06/18 13:30 台中市西屯區台灣大道四段1360號 → 桃園機場二航",
+      "SQ879：2026/06/18 17:45 桃園機場 T2 → 22:15 新加坡樟宜機場（4h 30m，經濟艙 N）",
+      "新加坡轉機：1h 10m（不同航廈，行李直掛）",
+      "LX177：2026/06/18 23:25 新加坡樟宜機場 T2 → 2026/06/19 06:15 蘇黎世機場（12h 50m，經濟艙 L）"
+    ],
     timeline: [
       {
         period: "下午",
@@ -245,7 +250,10 @@ export const itineraryDays: ItineraryDay[] = [
     weatherPlaceId: "zurich-airport",
     routePlaceIds: ["hotel-limmathof", "zurich", "zurich-hb", "zurich-airport", "bkk"],
     placeIds: ["zurich", "zurich-hb", "zurich-airport"],
-    flights: ["LX180 17:55 ZRH → 2026/06/28 09:50 BKK"],
+    flights: [
+      "LX180：2026/06/27 17:55 蘇黎世機場 → 2026/06/28 09:50 曼谷蘇凡納布機場（10h 55m，經濟艙 U）",
+      "曼谷轉機：2h 35m（行李直掛）"
+    ],
     timeline: [
       { period: "上午", items: [{ time: "09:30", title: "早餐" }, { time: "10:30", title: "Zürich 市區最後採買" }] },
       { period: "下午", items: [{ time: "13:30", title: "回飯店取行李" }, { time: "14:15", title: "Zürich HB → Zürich Flughafen", transport: { mode: "train", duration: "約 10-15 分" } }, { time: "15:00", title: "抵達機場" }, { time: "17:55", title: "LX180 起飛", transport: { mode: "flight", from: "ZRH", to: "BKK" } }] },
@@ -264,7 +272,10 @@ export const itineraryDays: ItineraryDay[] = [
     weatherPlaceId: "tpe",
     routePlaceIds: ["bkk", "tpe"],
     placeIds: ["bkk", "tpe"],
-    flights: ["BR212 12:25 BKK → 17:15 TPE"],
+    flights: [
+      "BR212：2026/06/28 12:25 曼谷蘇凡納布機場 → 17:15 桃園機場 T2（3h 50m，經濟艙 M）",
+      "全鋒接送 D3803621：2026/06/28 17:15 桃園機場二航 → 台中市西屯區台灣大道四段1360號"
+    ],
     timeline: [
       { period: "上午", items: [{ time: "09:50", title: "抵達曼谷" }] },
       { period: "下午", items: [{ time: "12:25", title: "BR212 曼谷起飛", transport: { mode: "flight", from: "BKK", to: "TPE" } }, { time: "17:15", title: "抵達桃園機場" }] },

@@ -95,7 +95,15 @@ export const travelDocuments: TravelDocumentItem[] = [
     title: "\u53bb\u7a0b\u6a5f\u7968 / \u767b\u6a5f\u8cc7\u8a0a",
     category: "\u6a5f\u7968",
     suggestedStorage: "Google Drive / iCloud / \u622a\u5716\u96e2\u7dda",
-    note: "SQ879\u3001LX177 \u822a\u73ed\u8cc7\u8a0a\u8207\u8f49\u6a5f\u6642\u9593\u3002"
+    note: "SQ879 17:45 TPE T2 \u2192 22:15 SIN\uff1bLX177 23:25 SIN T2 \u2192 06:15(+1) ZRH\u3002\u65b0\u52a0\u5761\u8f49\u6a5f 1h 10m\uff0c\u884c\u674e\u76f4\u639b\u3002"
+  },
+  {
+    id: "airport-transfer-outbound",
+    date: "2026-06-18",
+    title: "\u5168\u92d2\u6a5f\u5834\u63a5\u9001\uff08\u53bb\u7a0b\uff09",
+    category: "\u6a5f\u5834\u63a5\u9001",
+    suggestedStorage: "\u9810\u7d04\u55ae\u865f D3803617 / \u622a\u5716\u96e2\u7dda",
+    note: "2026/06/18 (\u56db) 13:30\uff1b\u53f0\u4e2d\u5e02\u897f\u5c6f\u5340\u53f0\u7063\u5927\u9053\u56db\u6bb51360\u865f \u2192 \u6843\u5712\u6a5f\u5834\u4e8c\u822a\u3002"
   },
   {
     id: "half-fare-card",
@@ -159,7 +167,15 @@ export const travelDocuments: TravelDocumentItem[] = [
     title: "\u56de\u7a0b\u6a5f\u7968 / \u9000\u7a05\u8cc7\u6599",
     category: "\u6a5f\u7968",
     suggestedStorage: "\u96e2\u7dda PDF + \u624b\u6a5f\u76f8\u7c3f",
-    note: "LX180\u3001BR212 \u8207\u6a5f\u5834\u9000\u7a05\u6587\u4ef6\u653e\u540c\u4e00\u593e\u3002"
+    note: "LX180 17:55 ZRH \u2192 09:50(+1) BKK\uff1bBR212 12:25 BKK \u2192 17:15 TPE T2\u3002\u66fc\u8c37\u8f49\u6a5f 2h 35m\uff0c\u884c\u674e\u76f4\u639b\u3002"
+  },
+  {
+    id: "airport-transfer-return",
+    date: "2026-06-28",
+    title: "\u5168\u92d2\u6a5f\u5834\u63a5\u9001\uff08\u56de\u7a0b\uff09",
+    category: "\u6a5f\u5834\u63a5\u9001",
+    suggestedStorage: "\u9810\u7d04\u55ae\u865f D3803621 / \u622a\u5716\u96e2\u7dda",
+    note: "2026/06/28 (\u65e5) 17:15\uff1b\u6843\u5712\u6a5f\u5834\u4e8c\u822a \u2192 \u53f0\u4e2d\u5e02\u897f\u5c6f\u5340\u53f0\u7063\u5927\u9053\u56db\u6bb51360\u865f\u3002"
   }
 ];
 

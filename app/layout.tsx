@@ -2,19 +2,12 @@ import "leaflet/dist/leaflet.css";
 import "./globals.css";
 
 import type { Metadata } from "next";
-import { Noto_Sans_TC } from "next/font/google";
 
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { OfflineNotice } from "@/components/OfflineNotice";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { ThemeProvider } from "@/components/ThemeProvider";
-
-const notoSansTc = Noto_Sans_TC({
-  subsets: ["latin"],
-  weight: ["400", "500", "700", "900"],
-  display: "swap"
-});
 
 export const metadata: Metadata = {
   title: "2026 \u745e\u58eb\u6e56\u5149\u5c71\u8272\u81ea\u99d5\u65c5\u884c",
@@ -40,7 +33,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="zh-Hant" suppressHydrationWarning>
-      <body className={notoSansTc.className}>
+      <body>
         <ThemeProvider>
           <ServiceWorkerRegister />
           <OfflineNotice />
