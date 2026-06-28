@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentType } from "react";
-import { Car, Hotel, Plus, ReceiptText, Trash2, Utensils, WalletCards } from "lucide-react";
+import { Car, Download, Hotel, Plus, ReceiptText, Trash2, Utensils, WalletCards } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Bar, BarChart, CartesianGrid, Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
@@ -26,6 +26,8 @@ interface ExpenseCategory {
 
 type ExpenseState = Record<ExpenseCategoryId, ExpenseItem[]>;
 
+type ExportFormat = "csv" | "json";
+
 const storageKey = "swiss-trip-expenses-v1";
 
 const labels = {
@@ -49,6 +51,12 @@ const labels = {
   topExpense: "\u6700\u9ad8\u652f\u51fa",
   noExpenses: "\u5c1a\u672a\u8f38\u5165\u8cbb\u7528",
   emptyChart: "\u958b\u59cb\u8f38\u5165\u8cbb\u7528\u5f8c\uff0c\u5716\u8868\u6703\u81ea\u52d5\u51fa\u73fe\u3002"
+  ,
+  exportTitle: "\u532f\u51fa\u65c5\u8cbb\u8cc7\u6599",
+  exportIntro: "\u532f\u51fa\u7684\u6a94\u6848\u6703\u5305\u542b\u76ee\u524d\u9019\u53f0\u88dd\u7f6e\u4e2d\u7684\u6240\u6709\u8a18\u5e33\u9805\u76ee\u3002CSV \u9069\u5408\u7528 Numbers / Excel \u958b\u555f\uff0cJSON \u9069\u5408\u7576\u5b8c\u6574\u5099\u4efd\u3002",
+  exportCsv: "\u532f\u51fa CSV",
+  exportJson: "\u532f\u51fa JSON",
+  exportEmpty: "\u76ee\u524d\u6c92\u6709\u53ef\u532f\u51fa\u7684\u8cbb\u7528\u9805\u76ee"
 };
 
 const categories: ExpenseCategory[] = [
@@ -112,6 +120,79 @@ function parseAmount(amount: string) {
 function formatChartValue(value: number | string) {
   const numericValue = typeof value === "number" ? value : Number(value);
   return formatNtd(Number.isFinite(numericValue) ? numericValue : 0);
+}
+
+function getExpenseRows(expenses: ExpenseState) {
+  return categories.flatMap((category) =>
+    expenses[category.id]
+      .filter((item) => item.name.trim() || parseAmount(item.amount) > 0)
+      .map((item) => ({
+        categoryId: category.id,
+        category: category.label,
+        name: item.name.trim(),
+        amount: parseAmount(item.amount)
+      }))
+  );
+}
+
+function csvCell(value: string | number) {
+  return `"${String(value).replaceAll('"', '""')}"`;
+}
+
+function buildExpenseCsv(expenses: ExpenseState, grandTotal: number) {
+  const rows = getExpenseRows(expenses);
+  const header = ["\u5206\u985e", "\u5206\u985eID", "\u540d\u76ee", "\u8cbb\u7528NTD"];
+  const lines = [
+    header.map(csvCell).join(","),
+    ...rows.map((row) => [row.category, row.categoryId, row.name, row.amount].map(csvCell).join(",")),
+    "",
+    ["\u7e3d\u8a08", "", "", grandTotal].map(csvCell).join(","),
+    ["3\u4eba\u5e73\u5747", "", "", Math.round(grandTotal / 3)].map(csvCell).join(",")
+  ];
+  return lines.join("\r\n");
+}
+
+function buildExpenseJson(expenses: ExpenseState, grandTotal: number) {
+  return JSON.stringify(
+    {
+      exportedAt: new Date().toISOString(),
+      trip: "Swiss 2026",
+      currency: "TWD",
+      travelers: 3,
+      grandTotal,
+      perPerson: Math.round(grandTotal / 3),
+      categoryTotals: categories.map((category) => ({
+        id: category.id,
+        label: category.label,
+        total: expenses[category.id].reduce((sum, item) => sum + parseAmount(item.amount), 0)
+      })),
+      items: getExpenseRows(expenses)
+    },
+    null,
+    2
+  );
+}
+
+async function shareOrDownload(blob: Blob, fileName: string) {
+  const file = new File([blob], fileName, { type: blob.type });
+  const canShareFiles = typeof navigator !== "undefined" && "canShare" in navigator && navigator.canShare({ files: [file] });
+
+  if (canShareFiles) {
+    await navigator.share({
+      title: fileName,
+      files: [file]
+    });
+    return;
+  }
+
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = fileName;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(url);
 }
 
 export function ExpenseTracker() {
@@ -191,6 +272,13 @@ export function ExpenseTracker() {
     setExpenses(createInitialState());
   }
 
+  async function exportExpenses(format: ExportFormat) {
+    const fileName = `swiss-trip-expenses-2026.${format}`;
+    const content = format === "csv" ? `\ufeff${buildExpenseCsv(expenses, totals.grandTotal)}` : buildExpenseJson(expenses, totals.grandTotal);
+    const type = format === "csv" ? "text/csv;charset=utf-8" : "application/json;charset=utf-8";
+    await shareOrDownload(new Blob([content], { type }), fileName);
+  }
+
   return (
     <div className="space-y-6">
       <section className="rounded-2xl bg-white p-5 shadow-soft ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10">
@@ -235,6 +323,37 @@ export function ExpenseTracker() {
       </section>
 
       <CurrencyConverter />
+
+      <section className="rounded-2xl bg-white p-5 shadow-soft ring-1 ring-slate-200 dark:bg-white/8 dark:ring-white/10">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p className="inline-flex items-center gap-2 text-sm font-black text-swiss-red">
+              <Download className="h-4 w-4" />
+              {labels.exportTitle}
+            </p>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">{labels.exportIntro}</p>
+          </div>
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <button
+              type="button"
+              onClick={() => void exportExpenses("csv")}
+              className="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl bg-lake-900 px-4 py-2.5 text-sm font-black text-white transition hover:-translate-y-0.5 dark:bg-white dark:text-lake-900"
+            >
+              <Download className="h-4 w-4" />
+              {labels.exportCsv}
+            </button>
+            <button
+              type="button"
+              onClick={() => void exportExpenses("json")}
+              className="focus-ring inline-flex items-center justify-center gap-2 rounded-2xl bg-lake-50 px-4 py-2.5 text-sm font-black text-lake-900 transition hover:-translate-y-0.5 dark:bg-white/10 dark:text-white"
+            >
+              <Download className="h-4 w-4" />
+              {labels.exportJson}
+            </button>
+          </div>
+        </div>
+        {getExpenseRows(expenses).length === 0 ? <p className="mt-3 text-xs font-bold text-slate-500 dark:text-slate-300">{labels.exportEmpty}</p> : null}
+      </section>
 
       <div className="grid gap-5 xl:grid-cols-2">
         {categories.map((category) => {
